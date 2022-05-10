@@ -11,7 +11,8 @@ namespace mimari_proje
         Otobüs otobüs;
         public IAbstractUlasim Ulasim()
         {
-            //otobüs.Nereden()
+            string a = "a";
+            otobüs.Nereden(a); 
             return new Otobüs();
         }
         public IAbstractKonaklama Konaklama()

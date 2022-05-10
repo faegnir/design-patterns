@@ -8,16 +8,16 @@ namespace mimari_proje
 {
     class Otobüs:IAbstractUlasim
     {
-        public string nereden;
+        private string nereden;
         private string nereye;
         private string sirketAd;
         public string Ulasim()
         {
             return "Otobüs";
         }
-        public string Nereden()
+        public string Nereden(string nereden)
         {
-            return nereden;
+            return this.nereden = nereden;
         }
         public string Nereye()
         {
