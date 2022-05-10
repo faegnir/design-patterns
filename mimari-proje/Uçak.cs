@@ -8,19 +8,24 @@ namespace mimari_proje
 {
     class Uçak:IAbstractUlasim
     {
-        private string nereye;
         private string nereden;
+        private string nereye;
+        private string sirketAd;
         public string Ulasim()
         {
             return "Uçak";
+        }
+        public string Nereden()
+        {
+            return nereden;
         }
         public string Nereye()
         {
             return nereye;
         }
-        public string Nereden()
+        public string SirketAd()
         {
-            return nereden;
+            return sirketAd;
         }
     }
 }

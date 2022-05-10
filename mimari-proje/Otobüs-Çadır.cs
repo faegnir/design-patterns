@@ -8,8 +8,10 @@ namespace mimari_proje
 {
     class Otobüs_Çadır:IAbstractFactory
     {
+        Otobüs otobüs;
         public IAbstractUlasim Ulasim()
         {
+            //otobüs.Nereden()
             return new Otobüs();
         }
         public IAbstractKonaklama Konaklama()
