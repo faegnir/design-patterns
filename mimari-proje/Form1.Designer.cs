@@ -51,11 +51,12 @@ namespace mimari_proje
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.neredenTxt = new System.Windows.Forms.TextBox();
+            this.nereyeTxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -100,7 +101,7 @@ namespace mimari_proje
             this.Uçak.Size = new System.Drawing.Size(61, 21);
             this.Uçak.TabIndex = 10;
             this.Uçak.TabStop = true;
-            this.Uçak.Text = "Ucak";
+            this.Uçak.Text = "Uçak";
             this.Uçak.UseVisualStyleBackColor = true;
             // 
             // groupBox2
@@ -133,7 +134,7 @@ namespace mimari_proje
             this.cadir.Size = new System.Drawing.Size(62, 21);
             this.cadir.TabIndex = 12;
             this.cadir.TabStop = true;
-            this.cadir.Text = "Cadir";
+            this.cadir.Text = "Çadır";
             this.cadir.UseVisualStyleBackColor = true;
             // 
             // UlasimGidisDate
@@ -256,19 +257,19 @@ namespace mimari_proje
             this.webBrowser1.Size = new System.Drawing.Size(596, 319);
             this.webBrowser1.TabIndex = 17;
             // 
-            // textBox1
+            // neredenTxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(792, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 18;
+            this.neredenTxt.Location = new System.Drawing.Point(792, 29);
+            this.neredenTxt.Name = "neredenTxt";
+            this.neredenTxt.Size = new System.Drawing.Size(100, 22);
+            this.neredenTxt.TabIndex = 18;
             // 
-            // textBox2
+            // nereyeTxt
             // 
-            this.textBox2.Location = new System.Drawing.Point(792, 90);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 19;
+            this.nereyeTxt.Location = new System.Drawing.Point(792, 90);
+            this.nereyeTxt.Name = "nereyeTxt";
+            this.nereyeTxt.Size = new System.Drawing.Size(100, 22);
+            this.nereyeTxt.TabIndex = 19;
             // 
             // label8
             // 
@@ -298,16 +299,27 @@ namespace mimari_proje
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 22;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(956, 163);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(153, 38);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "Rezervasyon İptal";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1121, 566);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.nereyeTxt);
+            this.Controls.Add(this.neredenTxt);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -361,11 +373,12 @@ namespace mimari_proje
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox neredenTxt;
+        private System.Windows.Forms.TextBox nereyeTxt;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
