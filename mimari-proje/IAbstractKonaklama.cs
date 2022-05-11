@@ -8,8 +8,6 @@ namespace mimari_proje
 {
     public interface IAbstractKonaklama
     {
-        string Konaklama();
-        DateTime BaslangicTarihi();
-        DateTime BitisTarihi();
+        string GetKonaklamaBilgi();
     }
 }

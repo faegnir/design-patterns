@@ -11,19 +11,25 @@ namespace mimari_proje
         private string nereden;
         private string nereye;
         private string sirketAd;
-        public string Ulasim()
+        private DateTime gidisTarih;
+        private DateTime donusTarih;
+        public Otobüs(string nereden, string nereye, string sirketAd, DateTime gidisTarih, DateTime donusTarih)
         {
-            return "Otobüs";
+            this.nereden = nereden;
+            this.nereye = nereye;
+            this.sirketAd = sirketAd;
+            this.gidisTarih = gidisTarih;
+            this.donusTarih = donusTarih;
         }
-        public string Nereden(string nereden)
+        public string GetUlasimTarihBilgi()
         {
-            return this.nereden = nereden;
+            return gidisTarih.ToShortDateString() + " - " + donusTarih.ToShortDateString();
         }
-        public string Nereye()
+        public string GetUlasimLokasyonBilgi()
         {
-            return nereye;
+            return nereden + " - " + nereye;
         }
-        public string SirketAd()
+        public string GetUlasimSirketBilgi()
         {
             return sirketAd;
         }
