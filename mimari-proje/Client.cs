@@ -26,9 +26,12 @@ namespace mimari_proje
             string receiptContent = part1 + part2 + part3;
             return receiptContent;
         }
-        public void XML_Rapor()
+        public string XML_Rapor(string ad, string soyad, int tcNo)
         {
-
+            string part1 = "<RAPOR>\n<KIMLIK>\n<Ad-Soyad>"+ad+" "+soyad+ "</Ad-Soyad>\n<TcNo>" + tcNo + "</TcNo>\n</KIMLIK>\n<ULAŞIM>\n<Tipi>" + _ulasim.GetType().Name + "</Tipi>\n<Tarihler>" + _ulasim.GetUlasimTarihBilgi() + "</Tarihler>\n<Ülkeler>" + _ulasim.GetUlasimLokasyonBilgi() + "</Ülkeler>\n<Firma>" + _ulasim.GetUlasimSirketBilgi() + "</Firma>\n</ULAŞIM>\n";
+            string part2 = "<KONAKLAMA>\n<Tipi>" + _konaklama.GetType().Name + "</Tipi>\n<Check-In-Out>" + _konaklama.GetKonaklamaBilgi() + "</Check-In-Out>\n</KONAKLAMA>\n" + "</RAPOR>";
+            string xmlReceipt = part1 + part2;
+            return xmlReceipt;
         }
         public void JSON_Rapor()
         {

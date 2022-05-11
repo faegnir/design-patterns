@@ -17,6 +17,7 @@ namespace mimari_proje
         {
             InitializeComponent();
         }
+        //string htmlRapor;
         private void button1_Click(object sender, EventArgs e)
         {
             if (adTxt.Text.Length > 0 || soyadTxt.Text.Length > 0 || tcNoTxt.Text.Length > 0)
@@ -24,37 +25,54 @@ namespace mimari_proje
                 if (Uçak.Checked && otel.Checked)
                 {
                     Client rezervasyonYap = new Client(new Uçak_Otel(neredenTxt.Text, nereyeTxt.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
-                    webBrowser1.DocumentText = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string htmlRapor = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    htmlKaydet(htmlRapor);
+                    string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    xmlKaydet(xmlRapor);
                     kaydet(Uçak.Text, otel.Text, Convert.ToInt32(tcNoTxt.Text));
                 }
                 else if (Uçak.Checked && cadir.Checked)
                 {
                     Client rezervasyonYap = new Client(new Uçak_Çadır(neredenTxt.Text, nereyeTxt.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
-                    webBrowser1.DocumentText = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string htmlRapor = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    htmlKaydet(htmlRapor);
+                    string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    xmlKaydet(xmlRapor);
                     kaydet(Uçak.Text, cadir.Text, Convert.ToInt32(tcNoTxt.Text));
                 }
                 else if (otobus.Checked && otel.Checked)
                 {
                     Client rezervasyonYap = new Client(new Otobüs_Otel(neredenTxt.Text, nereyeTxt.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
-                    webBrowser1.DocumentText = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string htmlRapor  = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    htmlKaydet(htmlRapor);
+                    string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    xmlKaydet(xmlRapor);
                     kaydet(otobus.Text, otel.Text, Convert.ToInt32(tcNoTxt.Text));
                 }
                 else if (otobus.Checked && cadir.Checked)
                 {
                     Client rezervasyonYap = new Client(new Otobüs_Çadır(neredenTxt.Text, nereyeTxt.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
-                    webBrowser1.DocumentText = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string htmlRapor = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    htmlKaydet(htmlRapor);
+                    string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    xmlKaydet(xmlRapor);
                     kaydet(otobus.Text, cadir.Text, Convert.ToInt32(tcNoTxt.Text));
                 }
                 else
                     MessageBox.Show("Hata!", "Hata!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+
+                Form3 form3 = new Form3();
+                this.Hide();
+                form3.Show();
             }
             else
                 MessageBox.Show("Kişisel verilerinizi girin.");
+            
+            
 
         }
         void kaydet(string ulasim, string konaklama,int tcNo)
         {
-           // File.AppendAllText((ulasim + ".txt"), "aaaaaaaaaaaa" + Environment.NewLine);
             using (StreamWriter writer = new StreamWriter(ulasim +".txt", append: true))
             {
                 writer.WriteLine(tcNoTxt.Text + " / " + neredenTxt.Text + " - " + nereyeTxt.Text + " / " + comboBox1.SelectedItem.ToString());
@@ -71,8 +89,16 @@ namespace mimari_proje
             this.Hide();
             form2.Show();
         }
+        void htmlKaydet(string htmlCode)
+        {
+            using (StreamWriter writer = new StreamWriter("HtmlRapor.txt"))
+            {
+                writer.Write(htmlCode);
+            }
+        }
+        void xmlKaydet(string xmlCode)
+        {
+            File.WriteAllText("XMLrapor.xml", xmlCode);
+        }
     }
 }
-            //string fileName = @"KonaklamaData.txt";
-            //string[] lines = File.ReadAllLines(fileName);
-             //foreach (string satır in lines)
