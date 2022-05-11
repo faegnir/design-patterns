@@ -20,8 +20,6 @@ namespace mimari_proje
         string ulasim,konaklama;
         private void button1_Click(object sender, EventArgs e)
         {
-            //string ulasim;
-            //string konaklama;
             if (textBox1.Text.Length > 1)
             {
                 if (ucakButton.Checked && otelButton.Checked)
@@ -44,58 +42,59 @@ namespace mimari_proje
                     ulasim = otoButton.Text;
                     konaklama =cadirButton.Text;
                 }
+            }
+           
+            if (textBox1.Text.Length > 1 && ulasim != null && konaklama != null)
+            {
+                string search_text = textBox1.Text;
+                string old;
+                string n = "";
+                string d = "";
+                StreamReader sr = File.OpenText(ulasim + ".txt");
+                if (File.ReadAllText(ulasim + ".txt").Contains(search_text))
+                {
+                    while ((old = sr.ReadLine()) != null)
+                    {
+                        if (!old.Contains(search_text))
+                        {
+                            n += old + Environment.NewLine;
+                        }
+                    }
+                    sr.Close();
+                    File.WriteAllText(ulasim + ".txt", n);
+                    MessageBox.Show(ulasim + " rezervasyonunuz iptal edildi.");
+                }
                 else
-                    MessageBox.Show("Hata!", "Hata!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-            }
-            else
-                MessageBox.Show("TC NO GİRİN!");
-
-            string search_text = textBox1.Text;
-            string old;
-            string n = "";
-            string d = "";
-            StreamReader sr = File.OpenText(ulasim + ".txt");
-            if (File.ReadAllText(ulasim + ".txt").Contains(search_text))
-            {
-                while ((old = sr.ReadLine()) != null)
                 {
-                    if (!old.Contains(search_text))
-                    {
-                        n += old + Environment.NewLine;
-                    }
+                    MessageBox.Show(ulasim + " için kayıt bulunamadı.");
                 }
-                sr.Close();
-                File.WriteAllText(ulasim + ".txt", n);
-                MessageBox.Show(ulasim + " rezervasyonunuz iptal edildi.");
-            }
-            else
-            {
-                MessageBox.Show(ulasim + " için kayıt bulunamadı.");
-            }
-            StreamReader kr = File.OpenText(konaklama + ".txt");
-            if (File.ReadAllText(konaklama + ".txt").Contains(search_text))
-            {
-                while ((old = kr.ReadLine()) != null)
+                StreamReader kr = File.OpenText(konaklama + ".txt");
+                if (File.ReadAllText(konaklama + ".txt").Contains(search_text))
                 {
-                    if (!old.Contains(search_text))
+                    while ((old = kr.ReadLine()) != null)
                     {
-                        d += old + Environment.NewLine;
+                        if (!old.Contains(search_text))
+                        {
+                            d += old + Environment.NewLine;
+                        }
                     }
+                    kr.Close();
+                    File.WriteAllText(konaklama + ".txt", d);
+                    MessageBox.Show(konaklama + " rezervasyonunuz iptal edildi.");
+                    this.Hide();
+                    Form1 form1 = new Form1();
+                    form1.Show();
                 }
-                kr.Close();
-                File.WriteAllText(konaklama + ".txt", d);
-                MessageBox.Show(konaklama + " rezervasyonunuz iptal edildi.");
-                this.Hide();
-                Form1 form1 = new Form1();
-                form1.Show();
+                else
+                {
+                    MessageBox.Show(konaklama + " için kayıt bulunamadı.");
+                    this.Hide();
+                    Form1 form1 = new Form1();
+                    form1.Show();
+                }
             }
             else
-            {
-                MessageBox.Show(konaklama + " için kayıt bulunamadı.");
-                this.Hide();
-                Form1 form1 = new Form1();
-                form1.Show();
-            }
+                MessageBox.Show("HATA, HATA");
         }
     }
 }
