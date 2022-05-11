@@ -8,24 +8,18 @@ namespace mimari_proje
 {
     class Otel:IAbstractKonaklama
     {
-        private int odaNo;
+        
         private DateTime baslangicTarihi;
         private DateTime bitisTarihi;
-        public string Konaklama()
+
+        public Otel(DateTime baslangicTarihi,DateTime bitisTarihi)
         {
-            return "Otel";
+            this.baslangicTarihi = baslangicTarihi;
+            this.bitisTarihi = bitisTarihi;
         }
-        public int OdaNo()
+        public string GetKonaklamaBilgi()
         {
-            return odaNo;
-        }
-        public DateTime BaslangicTarihi()
-        {
-            return baslangicTarihi;
-        }
-        public DateTime BitisTarihi()
-        {
-            return bitisTarihi;
+            return baslangicTarihi.ToShortDateString() +" "+ bitisTarihi.ToShortDateString();
         }
     }
 }

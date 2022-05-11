@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,54 +19,70 @@ namespace mimari_proje
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            IAbstractKonaklama konaklama;
-            IAbstractUlasim ulaşım;
-            if (Uçak.Checked && otel.Checked)
+            bool uygunUlasim = UygunUlasimRezervasyon(textBox1.Text,textBox2.Text,comboBox1.SelectedItem.ToString(),UlasimGidisDate.Value.ToShortDateString(),UlasimDonusDate.Value.ToShortDateString());
+            bool uygunKonaklama = UygunKonaklamaRezervasyon(KonakStartDate.Value.ToShortDateString(),KonakEndDate.Value.ToShortDateString());
+
+            if (Uçak.Checked && otel.Checked && uygunKonaklama && uygunUlasim)
             {
-                IAbstractFactory factory = new Uçak_Otel();
-                konaklama = factory.Konaklama();
-                ulaşım = factory.Ulasim();
-                // MessageBox.Show(konaklama.Konaklama() + " " + ulaşım.Ulasim());
+                Client rezervasyonYap = new Client(new Uçak_Otel(textBox1.Text, textBox2.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
+                webBrowser1.DocumentText = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
             }
-            else if (Uçak.Checked && cadir.Checked)
+            else if (Uçak.Checked && cadir.Checked && uygunKonaklama && uygunUlasim)
             {
-                IAbstractFactory factory = new Uçak_Çadır();
-                konaklama = factory.Konaklama();
-                ulaşım = factory.Ulasim();
+                Client rezervasyonYap = new Client(new Uçak_Çadır(textBox1.Text, textBox2.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
+                webBrowser1.DocumentText = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
             }
-            else if (otobus.Checked && otel.Checked)
+            else if (otobus.Checked && otel.Checked && uygunKonaklama && uygunUlasim)
             {
-                IAbstractFactory factory = new Otobüs_Otel();
-                konaklama = factory.Konaklama();
-                ulaşım = factory.Ulasim();
+                Client rezervasyonYap = new Client(new Otobüs_Otel(textBox1.Text, textBox2.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
+                webBrowser1.DocumentText = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+            }
+            else if (otobus.Checked&&cadir.Checked && uygunKonaklama && uygunUlasim)
+            {
+                Client rezervasyonYap = new Client(new Otobüs_Çadır(textBox1.Text, textBox2.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
+                webBrowser1.DocumentText = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
             }
             else
-            {
-                IAbstractFactory factory = new Otobüs_Çadır();
-                konaklama = factory.Konaklama();
-                ulaşım = factory.Ulasim();
-            }
-            string ad = adTxt.Text;
-            string soyad = soyadTxt.Text;
-            string tcNo = tcNoTxt.Text;
-            var UlasimStartDate = UlasimGidisDate.Value.ToShortDateString();
-            var UlasimEndDate = UlasimDonusDate.Value.ToShortDateString();
-            var KonaklamaStartDate = KonakStartDate.Value.ToShortDateString();
-            var KonaklamaEndDate = KonakEndDate.Value.ToShortDateString();
+                MessageBox.Show("Hata!", "Hata!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
 
-            // String checkedUlasim = groupBox1.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text;
-            //String checkedKonaklama = groupBox2.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Text;
-            MessageBox.Show(UlasimStartDate + " " + UlasimEndDate + "\n" + ulaşım.Ulasim() + " " + konaklama.Konaklama());
-            printHTML(ulaşım.Ulasim(), konaklama.Konaklama(), UlasimStartDate, UlasimEndDate, KonaklamaStartDate, KonaklamaEndDate, ad, soyad, tcNo);
         }
-        void printHTML(string ulasim, string konaklama, string ulasimStart, string ulasimEnd, string konaklamaStart, string konaklamaEnd, string ad, string soyad, string tcNo)
+        private bool UygunUlasimRezervasyon(string nereden, string nereye, string sirket, string gidisTarih, string donusTarih)
         {
-            string part1 = "<!DOCTYPE html><html><head><style>table {border-collapse: collapse;}table, td, th {border: 1px solid black;}</style></head><body style='font-family:cambria;font-size:12px'><div  style='border-style:solid;border-width:1px;height:400px;text-align:center'><header style='bottom-border-style:solid;bottom-border-width:1px;bottom-border-color:#333'><span style='font-size:13px'>";
-            string part2 = ulasim + "<br></span>";
-            string part3 = konaklama + "<hr style='color:#333'></header><div><table><tr ><td><b>Başlangıç Tarihi</b></td><td>" + konaklamaStart + "</td><td> <label style='padding-right:5%'><b>Bitiş Tarihi</b></label></td><td><label style='padding-right:20%'>" + konaklamaEnd + " </label></td></tr><tr><td><b> GST ID</b></td><td colspan='3'><p style='text-align:left'>";
-            string receiptContent = part1 + part2 + part3;
-            //richTextBox1.Text = receiptContent;
-            webBrowser1.DocumentText = receiptContent;
+            string fileName = @"UlasimData.txt";
+
+            string[] lines = File.ReadAllLines(fileName);
+            foreach (string satır in lines)
+            {
+                if (satır.Contains(nereden + " " + nereye + " " + sirket + " " + gidisTarih + " " + donusTarih))
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Uygun rezervasyon bulunamadı.", "Hata!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            return false;
+        }
+        private bool UygunKonaklamaRezervasyon(string baslangicTarih, string bitisTarih)
+        {
+            string fileName = @"KonaklamaData.txt";
+            string[] lines = File.ReadAllLines(fileName);
+            foreach (string satır in lines)
+            {
+                if (satır.Contains(baslangicTarih + " " + bitisTarih))
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Uygun rezervasyon bulunamadı.", "Hata!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                    return false;
+
+                }
+            }
+            return false;    
         }
     }
 }

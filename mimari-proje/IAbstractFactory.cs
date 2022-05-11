@@ -8,7 +8,7 @@ namespace mimari_proje
 {
     public interface IAbstractFactory
     {
-        IAbstractUlasim Ulasim();
-        IAbstractKonaklama Konaklama();
+        IAbstractUlasim UlasimBilgiDoldur();
+        IAbstractKonaklama KonaklamaBilgiDoldur();
     }
 }

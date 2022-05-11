@@ -8,9 +8,18 @@ namespace mimari_proje
 {
     class Çadır:IAbstractKonaklama
     {
-        public string Konaklama()
+
+        private DateTime baslangicTarihi;
+        private DateTime bitisTarihi;
+
+        public Çadır(DateTime baslangicTarihi, DateTime bitisTarihi)
         {
-            return "Çadır";
+            this.baslangicTarihi = baslangicTarihi;
+            this.bitisTarihi = bitisTarihi;
+        }
+        public string GetKonaklamaBilgi()
+        {
+            return baslangicTarihi.ToShortDateString() + " " + bitisTarihi.ToShortDateString();
         }
     }
 }

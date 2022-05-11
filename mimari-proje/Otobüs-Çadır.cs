@@ -8,16 +8,31 @@ namespace mimari_proje
 {
     class Otobüs_Çadır:IAbstractFactory
     {
-        Otobüs otobüs;
-        public IAbstractUlasim Ulasim()
+        private DateTime baslangicTarihi;
+        private DateTime bitisTarihi;
+
+        private DateTime gidisTarihi;
+        private DateTime donusTarihi;
+        private string nereden;
+        private string nereye;
+        private string sirketAd;
+        public Otobüs_Çadır(string nereden, string nereye, string sirket, DateTime baslangicTarihi, DateTime bitisTarihi, DateTime gidis, DateTime donus)
         {
-            string a = "a";
-            otobüs.Nereden(a); 
-            return new Otobüs();
+            this.nereden = nereden;
+            this.nereye = nereye;
+            this.sirketAd = sirket;
+            this.baslangicTarihi = baslangicTarihi;
+            this.bitisTarihi = bitisTarihi;
+            this.gidisTarihi = gidis;
+            this.donusTarihi = donus;
         }
-        public IAbstractKonaklama Konaklama()
+        public IAbstractUlasim UlasimBilgiDoldur()
         {
-            return new Çadır();
+            return new Otobüs(this.nereden, this.nereye, this.sirketAd, this.gidisTarihi, this.donusTarihi);
+        }
+        public IAbstractKonaklama KonaklamaBilgiDoldur()
+        {
+            return new Çadır(this.baslangicTarihi, this.bitisTarihi);
         }
     }
 }
