@@ -30,6 +30,7 @@ namespace mimari_proje
         private void InitializeComponent()
         {
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -38,14 +39,25 @@ namespace mimari_proje
             this.webBrowser1.Location = new System.Drawing.Point(0, 0);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1072, 518);
+            this.webBrowser1.Size = new System.Drawing.Size(1059, 515);
             this.webBrowser1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(922, 467);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(106, 36);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Geri Dön";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormHTML
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 518);
+            this.ClientSize = new System.Drawing.Size(1059, 515);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.webBrowser1);
             this.Name = "FormHTML";
             this.Text = "FormHTML";
@@ -57,5 +69,6 @@ namespace mimari_proje
         #endregion
 
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Button button1;
     }
 }

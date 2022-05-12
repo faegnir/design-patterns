@@ -38,5 +38,12 @@ namespace mimari_proje
 
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormRaporMenu formRaporMenu = new FormRaporMenu();
+            this.Hide();
+            formRaporMenu.Show();
+        }
     }
 }
