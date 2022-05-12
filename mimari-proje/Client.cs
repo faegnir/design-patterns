@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//using Newtonsoft.Json;
+//using mimari_proje;
 
 namespace mimari_proje
 {
@@ -33,10 +35,16 @@ namespace mimari_proje
             string xmlReceipt = part1 + part2;
             return xmlReceipt;
         }
-        public void JSON_Rapor()
+        public string JSON_Rapor(string ad, string soyad, int tcNo)
         {
-           
+            string jsonString = "{ \"Ad\": \""+ad+ "\", \"Soyad\": \"" + soyad + "\",\"TCNo\": "+tcNo+"," +
+                 "\"Ulaşım\": { \"tipi\": \"" + _ulasim.GetType().Name + "\", \"tarihi\": \"" + _ulasim.GetUlasimTarihBilgi() + "\", \"ülkeler\": \"" + _ulasim.GetUlasimLokasyonBilgi() + "\",\"firma\": \"" + _ulasim.GetUlasimSirketBilgi() + "\"}, " +
+                 "\"Konaklama\": {\"tipi\": \"" + _konaklama.GetType().Name + "\",\"inOutTarih\": \"" + _konaklama.GetKonaklamaBilgi() + "\"}}";
+            return jsonString;
+            //JSONclass.Root records = JsonConvert.DeserializeObject<JSONclass.Root>(jsonString);
+            //return records;
         }
+        
         
     }
 }
