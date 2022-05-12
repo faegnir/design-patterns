@@ -43,7 +43,7 @@ namespace mimari_proje
                 else if (otobus.Checked && otel.Checked)
                 {
                     Client rezervasyonYap = new Client(new Otobüs_Otel(neredenTxt.Text, nereyeTxt.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
-                    string htmlRapor  = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string htmlRapor = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
                     htmlKaydet(htmlRapor);
                     string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
                     xmlKaydet(xmlRapor);
@@ -67,13 +67,13 @@ namespace mimari_proje
             }
             else
                 MessageBox.Show("Kişisel verilerinizi girin.");
-            
-            
+
+
 
         }
-        void kaydet(string ulasim, string konaklama,int tcNo)
+        void kaydet(string ulasim, string konaklama, int tcNo)
         {
-            using (StreamWriter writer = new StreamWriter(ulasim +".txt", append: true))
+            using (StreamWriter writer = new StreamWriter(ulasim + ".txt", append: true))
             {
                 writer.WriteLine(tcNoTxt.Text + " / " + neredenTxt.Text + " - " + nereyeTxt.Text + " / " + comboBox1.SelectedItem.ToString());
             }
