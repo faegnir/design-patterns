@@ -39,12 +39,12 @@ namespace mimari_proje
             this.webBrowser1.Location = new System.Drawing.Point(0, 0);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1059, 515);
+            this.webBrowser1.Size = new System.Drawing.Size(1059, 394);
             this.webBrowser1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(922, 467);
+            this.button1.Location = new System.Drawing.Point(925, 346);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 36);
             this.button1.TabIndex = 2;
@@ -56,11 +56,11 @@ namespace mimari_proje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 515);
+            this.ClientSize = new System.Drawing.Size(1059, 394);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.webBrowser1);
             this.Name = "FormHTML";
-            this.Text = "FormHTML";
+            this.Text = "HTML Rapor";
             this.Load += new System.EventHandler(this.FormHTML_Load);
             this.ResumeLayout(false);
 

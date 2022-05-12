@@ -120,7 +120,7 @@ namespace mimari_proje
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.Name = "FormJSON";
-            this.Text = "FormJSON";
+            this.Text = "JSON Rapor";
             this.Load += new System.EventHandler(this.FormJSON_Load);
             this.ResumeLayout(false);
 

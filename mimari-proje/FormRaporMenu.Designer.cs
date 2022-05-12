@@ -97,7 +97,7 @@ namespace mimari_proje
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormRaporMenu";
-            this.Text = "Form3";
+            this.Text = "Raporlar";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

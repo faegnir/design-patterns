@@ -168,7 +168,7 @@ namespace mimari_proje
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Name = "FormRezervasyonİptal";
-            this.Text = "Form2";
+            this.Text = "Rezervasyon İptali";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

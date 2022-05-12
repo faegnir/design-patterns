@@ -22,59 +22,51 @@ namespace mimari_proje
         {
             if (textBox1.Text.Length > 1)
             {
-                if (ucakButton.Checked )//&& otelButton.Checked)
+                if (ucakButton.Checked )
                 {
                     ulasim = ucakButton.Text;
-                   // konaklama = otelButton.Text;
                 }
-                else if (/*ucakButton.Checked &&*/ cadirButton.Checked)
+                else if (cadirButton.Checked)
                 {
-                    //ulasim = ucakButton.Text;
                     konaklama = cadirButton.Text;
                 }
-                else if (/*otoButton.Checked &&*/ otelButton.Checked)
+                else if ( otelButton.Checked)
                 {
-                   // ulasim = otoButton.Text;
                     konaklama = otelButton.Text;
                 }
-                else if (otoButton.Checked /*&& cadirButton.Checked*/)
+                else if (otoButton.Checked)
                 {
                     ulasim = otoButton.Text;
-                    //konaklama =cadirButton.Text;
                 }
             }
             if (ulasim != null && textBox1.Text.Length > 1)
             {
-                if (/*ucakButton.Checked &&*/ cadirButton.Checked)
+                if (cadirButton.Checked)
                 {
-                    //ulasim = ucakButton.Text;
                     konaklama = cadirButton.Text;
                 }
-                else if (/*otoButton.Checked &&*/ otelButton.Checked)
+                else if (otelButton.Checked)
                 {
-                    // ulasim = otoButton.Text;
                     konaklama = otelButton.Text;
                 }
             }
             else if (konaklama != null && textBox1.Text.Length > 1)
             {
-                if (ucakButton.Checked)//&& otelButton.Checked)
+                if (ucakButton.Checked)
                 {
                     ulasim = ucakButton.Text;
-                    // konaklama = otelButton.Text;
                 }
-                else if (otoButton.Checked /*&& cadirButton.Checked*/)
+                else if (otoButton.Checked)
                 {
                     ulasim = otoButton.Text;
-                    //konaklama =cadirButton.Text;
                 }
             }
            
-            if (textBox1.Text.Length > 1 && ulasim != null)// && konaklama != null)
+            if (textBox1.Text.Length > 1 && ulasim != null)
             {
                 txte();
             }
-            else if (textBox1.Text.Length > 1 && konaklama != null)// && konaklama != null)
+            else if (textBox1.Text.Length > 1 && konaklama != null)
             {
                 txte();
             }
@@ -83,7 +75,7 @@ namespace mimari_proje
                 txte();
             }
             else
-                MessageBox.Show("HATA, HATA");
+                MessageBox.Show("Alanlar boş bırakılamaz!");
         }
 
         private void button2_Click(object sender, EventArgs e)
