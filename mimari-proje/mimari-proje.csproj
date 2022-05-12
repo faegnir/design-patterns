@@ -89,7 +89,6 @@
     <Compile Include="IAbstractFactory.cs" />
     <Compile Include="IAbstractKonaklama.cs" />
     <Compile Include="IAbstractUlasim.cs" />
-    <Compile Include="JSONclass.cs" />
     <Compile Include="Otel.cs" />
     <Compile Include="Otobüs-Otel.cs" />
     <Compile Include="Otobüs-Çadır.cs" />
