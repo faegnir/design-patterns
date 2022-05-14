@@ -37,8 +37,10 @@ namespace mimari_proje
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -52,8 +54,10 @@ namespace mimari_proje
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5,
+            this.columnHeader8,
             this.columnHeader6,
-            this.columnHeader7});
+            this.columnHeader7,
+            this.columnHeader9});
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 48);
             this.listView1.Name = "listView1";
@@ -92,6 +96,10 @@ namespace mimari_proje
             // 
             this.columnHeader5.Text = "Firma";
             // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Ücret";
+            // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Konaklama Tipi";
@@ -101,6 +109,10 @@ namespace mimari_proje
             // 
             this.columnHeader7.Text = "Tarihler";
             this.columnHeader7.Width = 130;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Ücret";
             // 
             // button1
             // 
@@ -138,5 +150,7 @@ namespace mimari_proje
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
     }
 }

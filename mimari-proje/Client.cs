@@ -20,25 +20,33 @@ namespace mimari_proje
         }
         public string HTML_Rapor(string ad,string soyad,string tcNo)
         {
-            string part1 = "<!DOCTYPE html><html><style>table, th, td {border: 1px solid black;}</style><body><h2> Seyehat Bilgileri </h2><table style = \"width:100%\"><tr><th> Kişisel Bilgiler </th><th> Ulaşım </th><th> Konaklama </th></tr><tr>";
-            string part2 = "<td>" +ad+" "+soyad+" "+tcNo+"</td><td><table style = \"width:100%\"><tr><th> Ulaşım Tipi </th><th> Gidiş - Dönüş Tarihleri </th><th> Nereden Nereye </th><th> Şirket Adı </th></tr><tr><td> " + _ulasim.GetType().Name+ " </td> <td> "+ _ulasim.GetUlasimTarihBilgi()+" </td><td> "+ _ulasim.GetUlasimLokasyonBilgi()+" </td><td> "+_ulasim.GetUlasimSirketBilgi()+" </td></tr> ";
-            string part3 = "</table></td><td><table style = \"width:100%\"><tr><th> Konaklama Tipi </th><th> Check In - Check Out Tarihleri</th></tr><tr><td> " + _konaklama.GetType().Name + " </td><td> " + _konaklama.GetKonaklamaBilgi() + "</td></tr></table></td></table><p> Bizi tercih ettiğiniz için teşekkür ederiz.</p></body></html>";
-            string receiptContent = part1 + part2 + part3;
-            return receiptContent;
+            Director director = new Director();
+            HTMLReportBuilder builder = new HTMLReportBuilder();
+            director.Builder = builder;
+
+            director.BuildDüzdenRapor(ad,soyad,tcNo,_ulasim.GetType().Name,_ulasim.GetUlasimTarihBilgi(),_ulasim.GetUlasimLokasyonBilgi(),_ulasim.GetUlasimSirketBilgi(),_konaklama.GetType().Name,_konaklama.GetKonaklamaBilgi());
+
+            return builder.GetProduct().ListParts();
         }
         public string XML_Rapor(string ad, string soyad, string tcNo)
         {
-            string part1 = "<RAPOR>\n<KIMLIK>\n<Ad-Soyad>"+ad+" "+soyad+ "</Ad-Soyad>\n<TcNo>" + tcNo + "</TcNo>\n</KIMLIK>\n<ULAŞIM>\n<Tipi>" + _ulasim.GetType().Name + "</Tipi>\n<Tarihler>" + _ulasim.GetUlasimTarihBilgi() + "</Tarihler>\n<Ülkeler>" + _ulasim.GetUlasimLokasyonBilgi() + "</Ülkeler>\n<Firma>" + _ulasim.GetUlasimSirketBilgi() + "</Firma>\n</ULAŞIM>\n";
-            string part2 = "<KONAKLAMA>\n<Tipi>" + _konaklama.GetType().Name + "</Tipi>\n<Check-In-Out>" + _konaklama.GetKonaklamaBilgi() + "</Check-In-Out>\n</KONAKLAMA>\n" + "</RAPOR>";
-            string xmlReceipt = part1 + part2;
-            return xmlReceipt;
+            Director director = new Director();
+            JSONReportBuilder builder = new JSONReportBuilder();
+            director.Builder = builder;
+
+            director.BuildDüzdenRapor(ad, soyad, tcNo, _ulasim.GetType().Name, _ulasim.GetUlasimTarihBilgi(), _ulasim.GetUlasimLokasyonBilgi(), _ulasim.GetUlasimSirketBilgi(), _konaklama.GetType().Name, _konaklama.GetKonaklamaBilgi());
+
+            return builder.GetProduct().ListParts();
         }
         public string JSON_Rapor(string ad, string soyad, string tcNo)
         {
-            string jsonString = "{ \"Ad\": \""+ad+ "\", \"Soyad\": \"" + soyad + "\",\"TCNo\": "+tcNo+"," +
-                 "\"Ulaşım\": { \"tipi\": \"" + _ulasim.GetType().Name + "\", \"tarihi\": \"" + _ulasim.GetUlasimTarihBilgi() + "\", \"ülkeler\": \"" + _ulasim.GetUlasimLokasyonBilgi() + "\",\"firma\": \"" + _ulasim.GetUlasimSirketBilgi() + "\"}, " +
-                 "\"Konaklama\": {\"tipi\": \"" + _konaklama.GetType().Name + "\",\"inOutTarih\": \"" + _konaklama.GetKonaklamaBilgi() + "\"}}";
-            return jsonString;
+            Director director = new Director();
+            XMLReportBuilder builder = new XMLReportBuilder();
+            director.Builder = builder;
+
+            director.BuildDüzdenRapor(ad, soyad, tcNo, _ulasim.GetType().Name, _ulasim.GetUlasimTarihBilgi(), _ulasim.GetUlasimLokasyonBilgi(), _ulasim.GetUlasimSirketBilgi(), _konaklama.GetType().Name, _konaklama.GetKonaklamaBilgi());
+
+            return builder.GetProduct().ListParts();
         }        
     }
 }

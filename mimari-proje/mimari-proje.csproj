@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Director.cs" />
     <Compile Include="FormJSON.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,18 +87,25 @@
     <Compile Include="FormXML.Designer.cs">
       <DependentUpon>FormXML.cs</DependentUpon>
     </Compile>
+    <Compile Include="HTMLReportBuilder.cs" />
     <Compile Include="IAbstractFactory.cs" />
     <Compile Include="IAbstractKonaklama.cs" />
     <Compile Include="IAbstractUlasim.cs" />
+    <Compile Include="IReportBuilder.cs" />
+    <Compile Include="JSONReportBuilder.cs" />
     <Compile Include="Otel.cs" />
     <Compile Include="Otobüs-Otel.cs" />
     <Compile Include="Otobüs-Çadır.cs" />
     <Compile Include="Otobüs.cs" />
+    <Compile Include="ProductHTML.cs" />
+    <Compile Include="ProductJSON.cs" />
+    <Compile Include="ProductXML.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Uçak-Otel.cs" />
     <Compile Include="Uçak-Çadır.cs" />
     <Compile Include="Uçak.cs" />
+    <Compile Include="XMLReportBuilder.cs" />
     <Compile Include="Çadır.cs" />
     <EmbeddedResource Include="FormJSON.resx">
       <DependentUpon>FormJSON.cs</DependentUpon>
