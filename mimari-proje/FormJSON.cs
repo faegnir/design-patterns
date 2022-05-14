@@ -23,7 +23,7 @@ namespace mimari_proje
         {
             dynamic jsonFile = JsonConvert.DeserializeObject(File.ReadAllText("JSONrapor.json", Encoding.UTF8));
             listView1.View = View.Details;
-            listView1.Items.Add(new ListViewItem(new string[] { jsonFile["Ad"], jsonFile["Soyad"], jsonFile["TCNo"], jsonFile["Ulaşım"]["tipi"], jsonFile["Ulaşım"]["tarihi"], jsonFile["Ulaşım"]["ülkeler"], jsonFile["Ulaşım"]["firma"], jsonFile["Konaklama"]["tipi"], jsonFile["Konaklama"]["inOutTarih"]}));
+            listView1.Items.Add(new ListViewItem(new string[] { jsonFile["Ad"], jsonFile["Soyad"], jsonFile["TCNo"], jsonFile["Ulaşım"]["tipi"], jsonFile["Ulaşım"]["tarihi"], jsonFile["Ulaşım"]["ülkeler"], jsonFile["Ulaşım"]["firma"], jsonFile["Ulaşım"]["ücret"], jsonFile["Konaklama"]["tipi"], jsonFile["Konaklama"]["inOutTarih"], jsonFile["Konaklama"]["ücret"] }));
         }
 
         private void button1_Click(object sender, EventArgs e)
