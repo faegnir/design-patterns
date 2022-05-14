@@ -25,40 +25,40 @@ namespace mimari_proje
                 if (Uçak.Checked && otel.Checked)
                 {
                     Client rezervasyonYap = new Client(new Uçak_Otel(neredenTxt.Text, nereyeTxt.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
-                    string htmlRapor = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string htmlRapor = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, tcNoTxt.Text);
                     htmlKaydet(htmlRapor);
-                    string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, tcNoTxt.Text);
                     xmlKaydet(xmlRapor);
-                    string jsonRapor = rezervasyonYap.JSON_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string jsonRapor = rezervasyonYap.JSON_Rapor(adTxt.Text, soyadTxt.Text, tcNoTxt.Text);
                     jsonKaydet(jsonRapor);
-                    kaydet(Uçak.Text, otel.Text, Convert.ToInt32(tcNoTxt.Text));
+                    kaydet(Uçak.Text, otel.Text, tcNoTxt.Text);
                 }
                 else if (Uçak.Checked && cadir.Checked)
                 {
                     Client rezervasyonYap = new Client(new Uçak_Çadır(neredenTxt.Text, nereyeTxt.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
-                    string htmlRapor = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string htmlRapor = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, tcNoTxt.Text);
                     htmlKaydet(htmlRapor);
-                    string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, tcNoTxt.Text);
                     xmlKaydet(xmlRapor);
-                    kaydet(Uçak.Text, cadir.Text, Convert.ToInt32(tcNoTxt.Text));
+                    kaydet(Uçak.Text, cadir.Text, tcNoTxt.Text);
                 }
                 else if (otobus.Checked && otel.Checked)
                 {
                     Client rezervasyonYap = new Client(new Otobüs_Otel(neredenTxt.Text, nereyeTxt.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
-                    string htmlRapor = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string htmlRapor = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, tcNoTxt.Text);
                     htmlKaydet(htmlRapor);
-                    string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, tcNoTxt.Text);
                     xmlKaydet(xmlRapor);
-                    kaydet(otobus.Text, otel.Text, Convert.ToInt32(tcNoTxt.Text));
+                    kaydet(otobus.Text, otel.Text, tcNoTxt.Text);
                 }
                 else if (otobus.Checked && cadir.Checked)
                 {
                     Client rezervasyonYap = new Client(new Otobüs_Çadır(neredenTxt.Text, nereyeTxt.Text, comboBox1.SelectedItem.ToString(), UlasimGidisDate.Value, UlasimDonusDate.Value, KonakStartDate.Value, KonakEndDate.Value));
-                    string htmlRapor = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string htmlRapor = rezervasyonYap.HTML_Rapor(adTxt.Text, soyadTxt.Text, tcNoTxt.Text);
                     htmlKaydet(htmlRapor);
-                    string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, Convert.ToInt32(tcNoTxt.Text));
+                    string xmlRapor = rezervasyonYap.XML_Rapor(adTxt.Text, soyadTxt.Text, tcNoTxt.Text);
                     xmlKaydet(xmlRapor);
-                    kaydet(otobus.Text, cadir.Text, Convert.ToInt32(tcNoTxt.Text));
+                    kaydet(otobus.Text, cadir.Text, tcNoTxt.Text);
                 }
                 else
                     MessageBox.Show("Hata!", "Hata!", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
@@ -73,15 +73,15 @@ namespace mimari_proje
 
 
         }
-        void kaydet(string ulasim, string konaklama, int tcNo)
+        void kaydet(string ulasim, string konaklama, string tcNo)
         {
             using (StreamWriter writer = new StreamWriter(ulasim + ".txt", append: true))
             {
-                writer.WriteLine(tcNoTxt.Text + " / " + neredenTxt.Text + " - " + nereyeTxt.Text + " / " + comboBox1.SelectedItem.ToString());
+                writer.WriteLine(tcNo + " / " + neredenTxt.Text + " - " + nereyeTxt.Text + " / " + comboBox1.SelectedItem.ToString());
             }
             using (StreamWriter writer2 = new StreamWriter(konaklama + ".txt", append: true))
             {
-                writer2.WriteLine(tcNoTxt.Text + " / " + KonakStartDate.Value.ToShortDateString() + " - " + KonakEndDate.Value.ToShortDateString());
+                writer2.WriteLine(tcNo + " / " + KonakStartDate.Value.ToShortDateString() + " - " + KonakEndDate.Value.ToShortDateString());
             }
         }
 

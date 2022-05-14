@@ -47,6 +47,7 @@ namespace mimari_proje
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(122, 196);
+            this.textBox1.MaxLength = 11;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(120, 22);
             this.textBox1.TabIndex = 0;
