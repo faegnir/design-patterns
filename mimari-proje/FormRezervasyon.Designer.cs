@@ -214,6 +214,7 @@ namespace mimari_proje
             // tcNoTxt
             // 
             this.tcNoTxt.Location = new System.Drawing.Point(86, 370);
+            this.tcNoTxt.MaxLength = 11;
             this.tcNoTxt.Name = "tcNoTxt";
             this.tcNoTxt.Size = new System.Drawing.Size(100, 22);
             this.tcNoTxt.TabIndex = 12;
